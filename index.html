@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Julia Clarice Uy | Geodetic Engineer, Remote Sensing and GIS</title>
+<meta name="description" content="Portfolio of Julia Clarice Uy, Geodetic Engineer (UP Diliman, cum laude) working in spatial data science, remote sensing, and urban analytics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Gochi+Hand&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{paper:'#f5f3ee'},fontFamily:{head:['"Barlow Condensed"','sans-serif'],sans:['"Zen Kaku Gothic New"','system-ui','sans-serif'],mono:['"IBM Plex Mono"','monospace'],hand:['"Gochi Hand"','cursive']},
+keyframes:{marquee:{from:{transform:'translateX(0)'},to:{transform:'translateX(-50%)'}}},animation:{marquee:'marquee 60s linear infinite'}}}}
+</script>
+<style>
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important}}
+:focus-visible{outline:2px solid #000;outline-offset:3px}
+summary::marker{color:#000}
+
+/* Filing Cabinet Transitions & Shadow */
+.folder-layer {
+  filter: drop-shadow(0 -1px 0 rgba(0, 0, 0, 0.22));
+}
+.folder-transition {
+  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1), opacity 240ms ease;
+  will-change: transform, opacity;
+}
+
+/* Tab Slot Clip-Paths (Left, Middle, Right with 20px Angled Shoulders) */
+.tab-clip-left {
+  clip-path: polygon(
+    0 0,
+    var(--tw) 0,
+    calc(var(--tw) + 20px) 44px,
+    100% 44px,
+    100% 100%,
+    0 100%
+  );
+}
+.tab-clip-mid {
+  clip-path: polygon(
+    0 44px,
+    calc(var(--tl) - 20px) 44px,
+    var(--tl) 0,
+    calc(var(--tl) + var(--tw)) 0,
+    calc(var(--tl) + var(--tw) + 20px) 44px,
+    100% 44px,
+    100% 100%,
+    0 100%
+  );
+}
+.tab-clip-right {
+  clip-path: polygon(
+    0 44px,
+    calc(var(--tl) - 20px) 44px,
+    var(--tl) 0,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+}
+
+/* Desk Sheet Elements */
+.sticky-torn {
+  clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 8px), 95% 100%, 90% calc(100% - 7px), 85% 100%, 80% calc(100% - 6px), 75% 100%, 70% calc(100% - 8px), 65% 100%, 60% calc(100% - 7px), 55% 100%, 50% calc(100% - 6px), 45% 100%, 40% calc(100% - 8px), 35% 100%, 30% calc(100% - 7px), 25% 100%, 20% calc(100% - 6px), 15% 100%, 10% calc(100% - 8px), 5% 100%, 0% calc(100% - 7px));
+}
+.hole-punch {
+  background: radial-gradient(circle, #2b2d3a 35%, #181920 65%, transparent 70%);
+}
+.paper-sheet {
+  background-color: #fbfaf6;
+  background-image: radial-gradient(#d3cfc4 0.75px, transparent 0.75px);
+  background-size: 16px 16px;
+}
+.pink-sheet {
+  background-color: #f2adb9;
+  background-image: radial-gradient(#e094a2 0.75px, transparent 0.75px);
+  background-size: 14px 14px;
+}
+
+/* Polaroid Photo Exhibits Styling */
+.polaroid {
+  --rot: 0deg;
+  transform: rotate(var(--rot));
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 220ms ease;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28), 0 1px 2px rgba(0, 0, 0, 0.12);
+  background: #ffffff;
+  padding: 10px 10px 42px 10px;
+  width: 160px;
+  position: relative;
+  border-radius: 2px;
+}
+@media (min-width: 1024px) {
+  .polaroid {
+    width: 190px;
+  }
+}
+.polaroid:hover,
+.polaroid:focus-visible {
+  transform: rotate(0deg) translateY(-4px) scale(1.03);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35), 0 2px 4px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+.polaroid-photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #ece8df;
+  border-radius: 1px;
+}
+.polaroid-caption {
+  position: absolute;
+  bottom: 0;
+  left: 8px;
+  right: 8px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Gochi Hand', cursive;
+  font-size: 15px;
+  line-height: 1.15;
+  color: #2b2b2b;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  user-select: none;
+}
+.tape-piece {
+  position: absolute;
+  width: 48px;
+  height: 16px;
+  pointer-events: none;
+  z-index: 5;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+.tape-left {
+  top: -9px;
+  left: -8px;
+  transform: rotate(-38deg);
+  background: rgba(253, 246, 227, 0.82);
+  border-left: 1px dashed rgba(0, 0, 0, 0.12);
+  border-right: 1px dashed rgba(0, 0, 0, 0.12);
+}
+.tape-right {
+  top: -9px;
+  right: -8px;
+  transform: rotate(38deg);
+  background: rgba(215, 235, 252, 0.78);
+  border-left: 1px dashed rgba(0, 0, 0, 0.12);
+  border-right: 1px dashed rgba(0, 0, 0, 0.12);
+}
+
+/* Progressive enhancement display rules */
+html.has-js .no-js-only { display: none !important; }
+html:not(.has-js) .js-only { display: none !important; }
+</style>
+<script>document.documentElement.classList.add('has-js');</script>
+</head>
+<body class="relative overflow-x-hidden bg-paper font-sans text-black antialiased">
+
+<!-- header -->
+<header class="relative z-30 border-b border-black/20">
+<div class="mx-auto flex max-w-[1200px] items-center justify-between px-5 py-4">
+<a href="#top" class="leading-tight"><span class="block text-[11px]">UP Diliman, BS Geodetic Engineering</span><span class="font-head text-2xl font-bold tracking-wide">JULIA CLARICE UY</span></a>
+<a href="#top" aria-label="Julia Uy" class="hidden sm:block">
+<svg width="190" height="48" viewBox="0 0 190 48" fill="none" stroke="#000" stroke-width="2"><circle cx="30" cy="24" r="20"/><circle cx="30" cy="24" r="12" fill="#000"/><path d="M60 8v32M60 24h22M82 10v28"/><ellipse cx="112" cy="24" rx="18" ry="18"/><circle cx="112" cy="24" r="6" fill="#000"/><path d="M142 10h30v28h-30z"/><path d="M148 18h18M148 24h18M148 30h12"/></svg></a>
+<div class="flex items-center gap-4">
+<a href="mailto:juliauy1314@gmail.com" aria-label="Email" class="hidden sm:inline text-xs underline">juliauy1314@gmail.com</a>
+<a href="https://www.linkedin.com/in/juliauy1314/" target="_blank" rel="noopener" class="text-sm font-bold">in</a>
+<p class="font-head leading-none" aria-label="Today"><span id="d1" class="text-3xl font-bold">10 16</span> <span class="text-[10px] font-bold"><span id="d2">2026</span><br><span id="d3">FRI</span></span></p>
+<button id="menuBtn" aria-label="Menu" aria-expanded="false" class="space-y-1.5 p-1"><span class="block h-px w-7 bg-black"></span><span class="block h-px w-7 bg-black"></span><span class="block h-px w-7 bg-black"></span></button>
+</div></div>
+<nav id="menu" class="absolute right-5 top-full hidden w-56 border border-black bg-white p-4 text-sm font-bold shadow-lg z-50">
+<a class="block py-1 hover:underline" href="#about">About</a><a class="block py-1 hover:underline" href="#projects">Publications and projects</a><a class="block py-1 hover:underline" href="#notes">Project notes</a><a class="block py-1 hover:underline" href="#field">Field surveying</a><a class="block py-1 hover:underline" href="#profile">Profile and skills</a><a class="block py-1 hover:underline" href="#contact">Contact</a></nav>
+</header>
+
+<!-- ticker -->
+<div class="overflow-hidden border-b border-dashed border-black/20 py-1 text-[11px] tracking-wider text-black/30" aria-hidden="true"><div class="flex w-max animate-marquee whitespace-nowrap motion-reduce:animate-none"><div><span class="px-4">TOPICS: FEATURED PROJECTS / FIELD SURVEYING / REMOTE SENSING / URBAN ANALYTICS / SPATIAL DATA SCIENCE / CONSERVATION GIS /</span><span class="px-4">TOPICS: FEATURED PROJECTS / FIELD SURVEYING / REMOTE SENSING / URBAN ANALYTICS / SPATIAL DATA SCIENCE / CONSERVATION GIS /</span><span class="px-4">TOPICS: FEATURED PROJECTS / FIELD SURVEYING / REMOTE SENSING / URBAN ANALYTICS / SPATIAL DATA SCIENCE / CONSERVATION GIS /</span></div><div><span class="px-4">TOPICS: FEATURED PROJECTS / FIELD SURVEYING / REMOTE SENSING / URBAN ANALYTICS / SPATIAL DATA SCIENCE / CONSERVATION GIS /</span><span class="px-4">TOPICS: FEATURED PROJECTS / FIELD SURVEYING / REMOTE SENSING / URBAN ANALYTICS / SPATIAL DATA SCIENCE / CONSERVATION GIS /</span><span class="px-4">TOPICS: FEATURED PROJECTS / FIELD SURVEYING / REMOTE SENSING / URBAN ANALYTICS / SPATIAL DATA SCIENCE / CONSERVATION GIS /</span></div></div></div>
+
+<!-- hero -->
+<section id="top" class="relative">
+<div class="pointer-events-none absolute left-[18%] top-[260px] h-[380px] w-[420px] rounded-full bg-[radial-gradient(circle,#ff9f43_0%,#ffd76a_45%,transparent_70%)] opacity-80 blur-3xl"></div>
+<div class="relative mx-auto grid max-w-[1400px] gap-10 py-12 lg:grid-cols-[minmax(0,460px)_1fr] lg:pl-8">
+<div class="px-5 lg:px-0 lg:pt-14">
+<p class="border-b border-dotted border-black pb-2 text-sm font-bold font-mono tracking-wider">INTRO</p>
+<h1 class="mt-5 font-head text-6xl font-bold leading-[1.05] tracking-wide sm:text-7xl">ABOUT ME</h1>
+<p class="mt-5 max-w-[400px] text-sm leading-relaxed">I am a licensed Geodetic Engineer and UP Diliman cum laude graduate. I immerse myself within the field of spatial data science, remote sensing, and urban analytics, using geospatial data to understand Filipino cities and make planning, policy, and conservation more evidence-based and equitable.</p>
+<a href="#about" class="relative mt-5 inline-block rounded-full border border-black bg-white px-5 py-2 text-xs font-bold hover:bg-black hover:text-white transition-colors">More about Julia &darr;</a>
+<svg class="mt-8 w-full max-w-[330px]" viewBox="0 0 300 150" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+<path d="M0 140h300"/><circle cx="70" cy="62" r="24" fill="#fff"/><path d="M46 62c-6-34 40-40 48-8-14-8-34-8-48 8z" fill="#000"/><circle cx="82" cy="68" r="2" fill="#000"/><path d="M44 140c0-36 20-48 40-48s30 20 30 48"/><path d="M84 112l30-8 24 8-24 10z" fill="#fff"/><path d="M250 140c0-30-30-30-30 0z" fill="#000"/><circle cx="235" cy="104" r="14" fill="#000"/><path d="M224 94l-2-14 10 8zM246 92l8-12 2 16z" fill="#000"/><path d="M248 140c20 0 30-20 14-30"/></svg>
+</div>
+<div class="relative border border-black bg-white p-5 sm:p-8 lg:rounded-l-[260px] lg:border-r-0 lg:py-10 lg:pl-40 lg:pr-10 max-lg:mx-5 max-lg:rounded-3xl shadow-sm">
+<p class="border-b border-dotted border-black pb-2 text-sm font-bold font-mono tracking-wider">FEATURED PROJECTS</p>
+<div class="mt-5 flex items-center gap-3 sm:gap-5">
+<button id="prev" aria-label="Previous project" class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-black bg-white hover:bg-black hover:text-white transition-colors">&larr;</button>
+<div id="slides" class="min-w-0 flex-1">
+  <div data-slide class=""><a href="#project-eagle" class="cabinet-trigger block rounded-3xl bg-[#2b2d3a] p-3"><div class="relative aspect-[16/10] overflow-hidden rounded-2xl bg-white"><img src="images/eagle-sites.jpg" alt="Suitable release sites for Philippine Eagles in Leyte" class="h-full w-full object-cover object-top"><span class="absolute left-3 top-3 rounded-sm bg-white px-2 py-1 text-[11px] font-bold font-mono">Journal article</span></div></a>
+  <div class="mt-4 flex items-end gap-4"><p class="font-head text-5xl font-bold leading-none sm:text-6xl">JOURNAL</p><div class="pb-1 text-xs"><p class="font-bold">June 2026</p><p class="text-neutral-500">#QGIS #MCDM #Conservation</p></div></div>
+  <p class="mt-3 text-sm font-medium leading-relaxed">Suitable release sites for Philippine Eagles in Leyte</p></div>
+  
+  <div data-slide class="hidden"><a href="#project-dasymetric" class="cabinet-trigger block rounded-3xl bg-[#2b2d3a] p-3"><div class="relative aspect-[16/10] overflow-hidden rounded-2xl bg-white"><img src="images/dasym-2015.jpg" alt="Dasymetric population mapping with Random Forest and OBIA" class="h-full w-full object-cover object-top"><span class="absolute left-3 top-3 rounded-sm bg-white px-2 py-1 text-[11px] font-bold font-mono">Conference paper</span></div></a>
+  <div class="mt-4 flex items-end gap-4"><p class="font-head text-5xl font-bold leading-none sm:text-6xl">CONFERENCE</p><div class="pb-1 text-xs"><p class="font-bold">February 2026</p><p class="text-neutral-500">#ISPRS #Sentinel2 #Marikina</p></div></div>
+  <p class="mt-3 text-sm font-medium leading-relaxed">Dasymetric population mapping with Random Forest and OBIA</p></div>
+  
+  <div data-slide class="hidden"><a href="#project-thesis" class="cabinet-trigger block rounded-3xl bg-[#2b2d3a] p-3"><div class="relative aspect-[16/10] overflow-hidden rounded-2xl bg-white"><img src="images/thesis-age.jpg" alt="Predicting urban housing rent from satellite-derived building age" class="h-full w-full object-cover object-top"><span class="absolute left-3 top-3 rounded-sm bg-white px-2 py-1 text-[11px] font-bold font-mono">Thesis</span></div></a>
+  <div class="mt-4 flex items-end gap-4"><p class="font-head text-5xl font-bold leading-none sm:text-6xl">THESIS</p><div class="pb-1 text-xs"><p class="font-bold">Sept 2025 to May 2026</p><p class="text-neutral-500">#Python #XGBoost #Landsat</p></div></div>
+  <p class="mt-3 text-sm font-medium leading-relaxed">Predicting urban housing rent from satellite-derived building age</p></div>
+  
+  <div data-slide class="hidden"><a href="#project-kabuhayan" class="cabinet-trigger block rounded-3xl bg-[#2b2d3a] p-3"><div class="relative aspect-[16/10] overflow-hidden rounded-2xl bg-white"><img src="images/kabuhayan-1.jpg" alt="Kabuhayan: negotiating street vendor relocation sites in Manila" class="h-full w-full object-cover object-top"><span class="absolute left-3 top-3 rounded-sm bg-white px-2 py-1 text-[11px] font-bold font-mono">Web GIS</span></div></a>
+  <div class="mt-4 flex items-end gap-4"><p class="font-head text-5xl font-bold leading-none sm:text-6xl">WEB GIS</p><div class="pb-1 text-xs"><p class="font-bold">Participatory SDSS</p><p class="text-neutral-500">#React #Leaflet #PostGIS</p></div></div>
+  <p class="mt-3 text-sm font-medium leading-relaxed">Kabuhayan: negotiating street vendor relocation sites in Manila</p></div>
+  
+  <div data-slide class="hidden"><a href="#project-sediment" class="cabinet-trigger block rounded-3xl bg-[#2b2d3a] p-3"><div class="relative aspect-[16/10] overflow-hidden rounded-2xl bg-white"><img src="images/sediment-map.jpg" alt="Mapping sediment plumes near the New Manila International Airport" class="h-full w-full object-cover object-top"><span class="absolute left-3 top-3 rounded-sm bg-white px-2 py-1 text-[11px] font-bold font-mono">Internship project</span></div></a>
+  <div class="mt-4 flex items-end gap-4"><p class="font-head text-5xl font-bold leading-none sm:text-6xl">INTERNSHIP</p><div class="pb-1 text-xs"><p class="font-bold">July 2025</p><p class="text-neutral-500">#PlanetScope #FloodMudIndex</p></div></div>
+  <p class="mt-3 text-sm font-medium leading-relaxed">Mapping sediment plumes near the New Manila International Airport</p></div>
+</div>
+<button id="next" aria-label="Next project" class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-black bg-white hover:bg-black hover:text-white transition-colors">&rarr;</button>
+</div>
+<div class="mt-5 flex justify-center gap-3"><button data-dot aria-label="Go to project 1" class="h-2 w-2 rounded-full bg-black"></button><button data-dot aria-label="Go to project 2" class="h-2 w-2 rounded-full bg-black/25"></button><button data-dot aria-label="Go to project 3" class="h-2 w-2 rounded-full bg-black/25"></button><button data-dot aria-label="Go to project 4" class="h-2 w-2 rounded-full bg-black/25"></button><button data-dot aria-label="Go to project 5" class="h-2 w-2 rounded-full bg-black/25"></button></div>
+</div>
+</div>
+</section>
+
+<!-- about -->
+<section id="about" class="relative mx-auto max-w-[1200px] px-5 py-14">
+<p class="border-b border-dotted border-black pb-2 text-sm font-bold font-mono tracking-wider">Who am I really?</p>
+<div class="mt-8 grid items-center gap-10 md:grid-cols-[320px_1fr]">
+<img src="images/portrait.jpg" alt="Portrait of Julia Clarice Uy in a UP sablay" class="w-full max-w-[320px] rounded-[3rem] border border-black object-cover shadow-md">
+<div>
+<h2 class="font-head text-4xl font-bold leading-tight sm:text-5xl">GEODETIC ENGINEER FOR SPATIAL DATA, REMOTE SENSING, AND URBAN ANALYTICS</h2>
+<p class="mt-5 max-w-[620px] leading-relaxed">My work focuses on using geospatial data to understand Filipino cities, from mapping population density in informal settlements to predicting housing market dynamics with satellite imagery. I use Google Earth Engine, Python, QGIS, and machine learning to turn complex spatial datasets into clear, usable insights.</p>
+<p class="mt-4 text-sm font-mono text-neutral-600">#problem-solver #communicative #responsible</p>
+</div></div>
+</section>
+
+<!-- projects overview list -->
+<section id="projects" class="relative mx-auto max-w-[1200px] px-5 py-14">
+<div class="pointer-events-none absolute -left-40 top-[40%] h-[320px] w-[360px] rounded-full bg-[radial-gradient(circle,#b6f07a_0%,#f4f06a_50%,transparent_70%)] opacity-70 blur-3xl"></div>
+<p class="relative border-b border-dotted border-black pb-2 text-sm font-bold font-mono tracking-wider">PUBLICATIONS AND PROJECTS</p>
+<div class="relative mt-8 grid gap-8 lg:grid-cols-[1fr_1fr_1.05fr]">
+<a href="#project-eagle" class="cabinet-trigger block group"><div class="aspect-[16/10] overflow-hidden rounded-xl bg-gradient-to-br from-[#c9d7ff] to-[#ffd9c9] p-4 transition-transform group-hover:-translate-y-1"><img src="images/eagle-sites.jpg" alt="Identifying Suitable Release Sites for Philippine Eagles in Leyte" class="h-full w-full rounded-md object-cover object-top shadow-lg"></div>
+<p class="mt-4 flex items-center gap-2 text-xs font-mono"><span class="h-1.5 w-1.5 rounded-full bg-black"></span>Published, Philippine Journal of Science</p>
+<p class="mt-1 text-xl font-bold font-mono">2026.06</p><h3 class="mt-2 text-lg font-bold leading-snug group-hover:underline">Identifying Suitable Release Sites for Philippine Eagles in Leyte</h3><p class="mt-2 text-sm leading-relaxed text-neutral-600">A GIS-based multi-criteria decision-making study that found about 10,320 ha of suitable habitat. Co-authored journal article, 155(3), 631-641.</p></a>
+<a href="#project-dasymetric" class="cabinet-trigger block group"><div class="aspect-[16/10] overflow-hidden rounded-xl bg-gradient-to-br from-[#d9ccff] to-[#bfe9d6] p-4 transition-transform group-hover:-translate-y-1"><img src="images/dasym-2015.jpg" alt="Dasymetric Mapping of Population Using Urban Settlement-Focused LULC Classification" class="h-full w-full rounded-md object-cover object-top shadow-lg"></div>
+<p class="mt-4 flex items-center gap-2 text-xs font-mono"><span class="h-1.5 w-1.5 rounded-full bg-black"></span>Published, ISPRS Annals (PhilGEOS 2025)</p>
+<p class="mt-1 text-xl font-bold font-mono">2026.02</p><h3 class="mt-2 text-lg font-bold leading-snug group-hover:underline">Dasymetric Mapping of Population Using Urban Settlement-Focused LULC Classification</h3><p class="mt-2 text-sm leading-relaxed text-neutral-600">Compares Random Forest, OBIA, and hybrid OBIA-RF methods for Marikina City. Co-authored conference paper, pp. 401-408.</p></a>
+<div><div class="border-b border-black">
+<a href="#project-thesis" class="cabinet-trigger flex gap-4 border-t border-black py-4 hover:bg-white/70 transition-colors"><span class="mt-1 h-10 w-14 shrink-0 rounded-sm bg-gradient-to-br from-[#d9b8ff] to-[#ffd9a8]"></span><span class="text-xs"><b class="block text-sm font-mono">2025.09 to 2026.05</b><span class="text-neutral-500 font-mono">Thesis</span><span class="mt-1 block text-sm font-medium text-black">Urban housing rent prediction, Manggahan, Pasig</span></span></a>
+<a href="#project-kabuhayan" class="cabinet-trigger flex gap-4 border-t border-black py-4 hover:bg-white/70 transition-colors"><span class="mt-1 h-10 w-14 shrink-0 rounded-sm bg-gradient-to-br from-[#d9b8ff] to-[#ffd9a8]"></span><span class="text-xs"><b class="block text-sm font-mono">Participatory SDSS</b><span class="text-neutral-500 font-mono">Web GIS</span><span class="mt-1 block text-sm font-medium text-black">Kabuhayan vendor relocation tool, Manila</span></span></a>
+<a href="#project-sediment" class="cabinet-trigger flex gap-4 border-t border-black py-4 hover:bg-white/70 transition-colors"><span class="mt-1 h-10 w-14 shrink-0 rounded-sm bg-gradient-to-br from-[#d9b8ff] to-[#ffd9a8]"></span><span class="text-xs"><b class="block text-sm font-mono">2025.07</b><span class="text-neutral-500 font-mono">Internship project</span><span class="mt-1 block text-sm font-medium text-black">Sediment plumes in Bulacan and Valenzuela</span></span></a>
+<a href="#project-visuals" class="cabinet-trigger flex gap-4 border-t border-black py-4 hover:bg-white/70 transition-colors"><span class="mt-1 h-10 w-14 shrink-0 rounded-sm bg-gradient-to-br from-[#d9b8ff] to-[#ffd9a8]"></span><span class="text-xs"><b class="block text-sm font-mono">2025</b><span class="text-neutral-500 font-mono">Internship tasks</span><span class="mt-1 block text-sm font-medium text-black">Ocean current maps and 3D terrain dioramas</span></span></a>
+</div><a href="#notes" class="ml-auto mt-8 block w-max rounded-full border border-black bg-white px-6 py-2 text-xs font-bold hover:bg-black hover:text-white transition-colors">See all project notes &rarr;</a></div>
+</div>
+<svg class="mt-12 w-full max-w-[420px]" viewBox="0 0 300 130" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M0 125h300"/><path d="M150 40l-34 85M150 40l34 85M150 40v85"/><rect x="132" y="14" width="36" height="26" rx="4" fill="#fff"/><circle cx="150" cy="27" r="6"/><path d="M226 125c0-26 30-26 30 0z" fill="#000"/><circle cx="241" cy="95" r="12" fill="#000"/><path d="M231 87l-1-12 9 7zM250 85l8-10 1 14z" fill="#000"/></svg>
+</section>
+
+<!-- hashtag band -->
+<div class="overflow-hidden border-y border-black bg-paper py-3 font-head text-xl font-bold tracking-wide" aria-hidden="true"><div class="flex w-max animate-marquee whitespace-nowrap motion-reduce:animate-none"><div><span class="px-5">#GIS</span> <span class="px-5">#RemoteSensing</span> <span class="px-5">#Python</span> <span class="px-5">#GoogleEarthEngine</span> <span class="px-5">#Surveying</span> <span class="px-5">#GNSS</span> <span class="px-5">#Photogrammetry</span> <span class="px-5">#UrbanAnalytics</span> <span class="px-5">#MachineLearning</span> <span class="px-5">#Conservation</span> <span class="px-5">#WebGIS</span> <span class="px-5">#PostGIS</span></div><div><span class="px-5">#GIS</span> <span class="px-5">#RemoteSensing</span> <span class="px-5">#Python</span> <span class="px-5">#GoogleEarthEngine</span> <span class="px-5">#Surveying</span> <span class="px-5">#GNSS</span> <span class="px-5">#Photogrammetry</span> <span class="px-5">#UrbanAnalytics</span> <span class="px-5">#MachineLearning</span> <span class="px-5">#Conservation</span> <span class="px-5">#WebGIS</span> <span class="px-5">#PostGIS</span></div></div></div>
+
+<!-- =============================================================== -->
+<!-- PROJECT NOTES : FILING CABINET INTERACTION                     -->
+<!-- =============================================================== -->
+<section id="notes" class="relative flex border-b border-black">
+<!-- vertical sticky sidebar tab -->
+<div class="hidden w-12 shrink-0 border-r border-black sm:block bg-paper/60"><p class="sticky top-6 py-6 text-center text-sm font-bold [writing-mode:vertical-rl] mx-auto tracking-widest font-mono text-black">&#128214; PROJECT NOTES</p></div>
+
+<div class="relative min-w-0 flex-1 overflow-hidden px-4 py-12 sm:px-8 lg:px-12">
+<svg class="pointer-events-none absolute -right-24 top-6 hidden lg:block opacity-30" width="320" height="320" viewBox="0 0 320 320" fill="none" stroke="#000" stroke-width="1" aria-hidden="true"><circle cx="160" cy="160" r="40"/><circle cx="160" cy="160" r="70"/><circle cx="160" cy="160" r="100"/><circle cx="160" cy="160" r="130"/><circle cx="160" cy="160" r="158"/></svg>
+
+<!-- Header & Breadcrumbs -->
+<div class="mb-8 flex flex-col justify-between gap-4 border-b border-dotted border-black pb-4 sm:flex-row sm:items-end">
+  <div>
+    <div id="cabinetBreadcrumb" class="flex items-center gap-2 text-xs font-mono text-neutral-600 mb-1">
+      <button id="cabinetResetBtn" class="hover:underline flex items-center gap-1 font-bold text-black cursor-pointer" title="Return to folder stack">&#128193; PROJECT NOTES</button>
+      <span id="breadcrumbSeparator" class="hidden text-neutral-400">/</span>
+      <span id="breadcrumbProject" class="hidden text-black font-semibold font-mono"></span>
+    </div>
+    <h2 id="cabinetMainHeading" class="font-head text-4xl font-bold tracking-tight sm:text-5xl uppercase transition-opacity duration-200">
+      ARCHIVAL DOSSIERS 01–06
+    </h2>
+  </div>
+  <div id="cabinetMeta" class="flex items-center gap-4 text-xs font-mono">
+    <div id="cabinetMetaText" class="text-right hidden sm:block text-neutral-500">
+      <span>DRAWER REPOSITORY</span><br><span class="text-black font-bold">UP DILIMAN GEODETIC ENG.</span>
+    </div>
+    <button id="cabinetCloseBtn" class="hidden rounded-full border border-black bg-white px-4 py-1.5 text-xs font-bold hover:bg-black hover:text-white transition-colors cursor-pointer" aria-label="Close folder view">
+      ✕ CLOSE FOLDER [ESC]
+    </button>
+  </div>
+</div>
+
+<!-- JS-ENABLED FILING CABINET -->
+<div id="cabinetApp" class="js-only relative mx-auto max-w-[1140px] select-none">
+
+  <!-- ================= STAGE 1 & 2 : RESTING / PEEK STACK ================= -->
+  <div id="cabinetStack" class="relative w-full h-[720px] max-sm:h-[650px] transition-all duration-300">
+    
+    <!-- Transparent Hit Strips matching exact tab footprints -->
+    <div class="absolute inset-x-0 top-0 h-[264px] z-30 pointer-events-auto" id="hitStripContainer">
+      <!-- 0: Visuals (Left) -->
+      <button type="button" data-hit="0" style="top: 0px; left: 0px; width: max(28%, 210px);" class="absolute h-[44px] cursor-pointer opacity-0 border-none outline-none" title="Open Geospectrum Visuals (File 06)" aria-label="Open Geospectrum Visuals (File 06)"></button>
+      <!-- 1: Sediment (Right) -->
+      <button type="button" data-hit="1" style="top: 44px; right: 0px; width: max(30%, 230px);" class="absolute h-[44px] cursor-pointer opacity-0 border-none outline-none" title="Open Sediment Plumes (File 05)" aria-label="Open Sediment Plumes (File 05)"></button>
+      <!-- 2: Kabuhayan (Middle) -->
+      <button type="button" data-hit="2" style="top: 88px; left: 34%; width: max(30%, 230px);" class="absolute h-[44px] cursor-pointer opacity-0 border-none outline-none" title="Open Kabuhayan SDSS (File 04)" aria-label="Open Kabuhayan SDSS (File 04)"></button>
+      <!-- 3: Dasymetric (Left) -->
+      <button type="button" data-hit="3" style="top: 132px; left: 0px; width: max(31%, 240px);" class="absolute h-[44px] cursor-pointer opacity-0 border-none outline-none" title="Open Dasymetric Mapping (File 02)" aria-label="Open Dasymetric Mapping (File 02)"></button>
+      <!-- 4: Eagle (Right) -->
+      <button type="button" data-hit="4" style="top: 176px; right: 0px; width: max(32%, 245px);" class="absolute h-[44px] cursor-pointer opacity-0 border-none outline-none" title="Open Eagle Release Sites (File 01)" aria-label="Open Eagle Release Sites (File 01)"></button>
+      <!-- 5: Thesis (Middle) -->
+      <button type="button" data-hit="5" style="top: 220px; left: 33%; width: max(34%, 260px);" class="absolute h-[44px] cursor-pointer opacity-0 border-none outline-none" title="Open Thesis: Rent Prediction (File 03)" aria-label="Open Thesis Rent Prediction (File 03)"></button>
+    </div>
+
+    <!-- FOLDER 0: GEOSPECTRUM VISUALS (Back, Lavender) -->
+    <div class="folder-layer absolute inset-x-0" style="top: 0px;">
+      <div data-folder-index="0" data-project-id="visuals" style="--tl: 0px; --tw: max(28%, 210px); transform: translateY(0px);" class="cabinet-folder tab-clip-left folder-transition relative h-[450px] bg-[#b9a3e8] text-black">
+        <!-- Tab Label -->
+        <div style="left: var(--tl); width: var(--tw);" class="absolute top-0 h-[44px] flex items-center px-4 font-head text-base sm:text-lg font-bold tracking-wider uppercase pointer-events-none truncate">
+          <span class="mr-2 text-xs">◆</span><span class="font-mono text-xs font-semibold mr-1.5 opacity-70">06</span><span class="hidden sm:inline">VISUALS & 3D</span><span class="sm:hidden">VISUALS</span>
+        </div>
+        <!-- Face Content (Revealed during peek) -->
+        <div class="pt-14 px-6 sm:px-8 max-w-xl">
+          <p class="font-mono text-xs font-semibold text-black/75 uppercase flex items-center gap-1.5"><span>●</span> 2025 // INTERNSHIP TASKS</p>
+          <h3 class="font-head text-2xl sm:text-3xl font-bold uppercase tracking-wide mt-1 text-black">Geospatial Visuals for Geospectrum</h3>
+          <p class="font-sans text-xs sm:text-sm text-black/80 mt-1 line-clamp-2">Ocean current flow dynamics & 3D volcano terrain dioramas for public visual intelligence.</p>
+          <button type="button" class="mt-2.5 inline-block font-mono text-xs font-bold underline cursor-pointer">VIEW PROJECT ↗</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOLDER 1: SEDIMENT PLUMES (Yellow) -->
+    <div class="folder-layer absolute inset-x-0" style="top: 44px;">
+      <div data-folder-index="1" data-project-id="sediment" style="--tl: calc(100% - max(30%, 230px)); --tw: max(30%, 230px); transform: translateY(0px);" class="cabinet-folder tab-clip-right folder-transition relative h-[450px] bg-[#f2c230] text-black">
+        <div style="left: var(--tl); width: var(--tw);" class="absolute top-0 h-[44px] flex items-center justify-end px-5 font-head text-base sm:text-lg font-bold tracking-wider uppercase pointer-events-none truncate">
+          <span class="mr-2 text-xs">◆</span><span class="font-mono text-xs font-semibold mr-1.5 opacity-70">05</span><span class="hidden sm:inline">SEDIMENT PLUMES</span><span class="sm:hidden">SEDIMENT</span>
+        </div>
+        <div class="pt-14 px-6 sm:px-8 max-w-xl">
+          <p class="font-mono text-xs font-semibold text-black/75 uppercase flex items-center gap-1.5"><span>●</span> JULY 2025 // BULACAN & VALENZUELA</p>
+          <h3 class="font-head text-2xl sm:text-3xl font-bold uppercase tracking-wide mt-1 text-black">Sediment Plumes in Coastal Manila Bay</h3>
+          <p class="font-sans text-xs sm:text-sm text-black/80 mt-1 line-clamp-2">Delineating coastal sediment plumes near NMIA using PlanetScope and Flood Mud Index.</p>
+          <button type="button" class="mt-2.5 inline-block font-mono text-xs font-bold underline cursor-pointer">VIEW PROJECT ↗</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOLDER 2: KABUHAYAN SDSS (Forest Green) -->
+    <div class="folder-layer absolute inset-x-0" style="top: 88px;">
+      <div data-folder-index="2" data-project-id="kabuhayan" style="--tl: 34%; --tw: max(30%, 230px); transform: translateY(0px);" class="cabinet-folder tab-clip-mid folder-transition relative h-[450px] bg-[#1f6b4f] text-white">
+        <div style="left: var(--tl); width: var(--tw);" class="absolute top-0 h-[44px] flex items-center justify-center px-4 font-head text-base sm:text-lg font-bold tracking-wider uppercase pointer-events-none truncate">
+          <span class="mr-2 text-xs text-amber-300">◆</span><span class="font-mono text-xs font-semibold mr-1.5 opacity-75">04</span><span class="hidden sm:inline">KABUHAYAN SDSS</span><span class="sm:hidden">KABUHAYAN</span>
+        </div>
+        <div class="pt-14 px-6 sm:px-8 max-w-xl">
+          <p class="font-mono text-xs font-semibold text-white/80 uppercase flex items-center gap-1.5"><span>●</span> PARTICIPATORY SDSS // CITY OF MANILA</p>
+          <h3 class="font-head text-2xl sm:text-3xl font-bold uppercase tracking-wide mt-1 text-white">Vendor Relocation Decision System</h3>
+          <p class="font-sans text-xs sm:text-sm text-white/85 mt-1 line-clamp-2">Participatory web-GIS platform negotiating street vendor relocation sites using AHP & Borda voting.</p>
+          <button type="button" class="mt-2.5 inline-block font-mono text-xs font-bold underline cursor-pointer">VIEW PROJECT ↗</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOLDER 3: DASYMETRIC POPULATION (Burnt Orange) -->
+    <div class="folder-layer absolute inset-x-0" style="top: 132px;">
+      <div data-folder-index="3" data-project-id="dasymetric" style="--tl: 0px; --tw: max(31%, 240px); transform: translateY(0px);" class="cabinet-folder tab-clip-left folder-transition relative h-[450px] bg-[#c94a14] text-white">
+        <div style="left: var(--tl); width: var(--tw);" class="absolute top-0 h-[44px] flex items-center px-4 font-head text-base sm:text-lg font-bold tracking-wider uppercase pointer-events-none truncate">
+          <span class="mr-2 text-xs text-amber-300">◆</span><span class="font-mono text-xs font-semibold mr-1.5 opacity-75">02</span><span class="hidden sm:inline">DASYMETRIC MAPPING</span><span class="sm:hidden">DASYMETRIC</span>
+        </div>
+        <div class="pt-14 px-6 sm:px-8 max-w-xl">
+          <p class="font-mono text-xs font-semibold text-white/80 uppercase flex items-center gap-1.5"><span>●</span> FEBRUARY 2026 // PHILGEOS & ISPRS</p>
+          <h3 class="font-head text-2xl sm:text-3xl font-bold uppercase tracking-wide mt-1 text-white">Dasymetric Population Mapping</h3>
+          <p class="font-sans text-xs sm:text-sm text-white/85 mt-1 line-clamp-2">Settlement-focused dasymetric population downscaling in Marikina with Sentinel-2 and OBIA-RF.</p>
+          <button type="button" class="mt-2.5 inline-block font-mono text-xs font-bold underline cursor-pointer">VIEW PROJECT ↗</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOLDER 4: EAGLE RELEASE SITES (Deep Maroon) -->
+    <div class="folder-layer absolute inset-x-0" style="top: 176px;">
+      <div data-folder-index="4" data-project-id="eagle" style="--tl: calc(100% - max(32%, 245px)); --tw: max(32%, 245px); transform: translateY(0px);" class="cabinet-folder tab-clip-right folder-transition relative h-[450px] bg-[#7a1f1f] text-white">
+        <div style="left: var(--tl); width: var(--tw);" class="absolute top-0 h-[44px] flex items-center justify-end px-5 font-head text-base sm:text-lg font-bold tracking-wider uppercase pointer-events-none truncate">
+          <span class="mr-2 text-xs text-amber-300">◆</span><span class="font-mono text-xs font-semibold mr-1.5 opacity-75">01</span><span class="hidden sm:inline">PHILIPPINE EAGLE SITES</span><span class="sm:hidden">EAGLES</span>
+        </div>
+        <div class="pt-14 px-6 sm:px-8 max-w-xl">
+          <p class="font-mono text-xs font-semibold text-white/80 uppercase flex items-center gap-1.5"><span>●</span> JUNE 2026 // PHIL. JOURNAL OF SCIENCE</p>
+          <h3 class="font-head text-2xl sm:text-3xl font-bold uppercase tracking-wide mt-1 text-white">Philippine Eagle Release Sites in Leyte</h3>
+          <p class="font-sans text-xs sm:text-sm text-white/85 mt-1 line-clamp-2">Multi-criteria GIS evaluation identifying suitable release zones for critically endangered eagles in Eastern Visayas.</p>
+          <button type="button" class="mt-2.5 inline-block font-mono text-xs font-bold underline cursor-pointer">VIEW PROJECT ↗</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOLDER 5: THESIS RENT PREDICTION (Front, Deep Navy) -->
+    <div class="folder-layer absolute inset-x-0" style="top: 220px;">
+      <div data-folder-index="5" data-project-id="thesis" style="--tl: 33%; --tw: max(34%, 260px); transform: translateY(0px);" class="cabinet-folder tab-clip-mid folder-transition relative h-[460px] bg-[#1f2a5c] text-white">
+        <!-- Tab Label -->
+        <div style="left: var(--tl); width: var(--tw);" class="absolute top-0 h-[44px] flex items-center justify-center px-4 font-head text-base sm:text-lg font-bold tracking-wider uppercase pointer-events-none truncate">
+          <span class="mr-2 text-xs text-amber-300">◆</span><span class="font-mono text-xs font-semibold mr-1.5 opacity-75">03</span><span class="hidden sm:inline">THESIS · RENT PREDICTION</span><span class="sm:hidden">THESIS</span>
+        </div>
+        
+        <!-- Front Folder Full Face Content: Two Columns on Desktop -->
+        <div class="pt-14 px-6 sm:px-10 lg:px-12 grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-8 items-center">
+          <div>
+            <p class="font-mono text-xs font-semibold text-amber-300 uppercase tracking-wider flex items-center gap-2">
+              <span>●</span> SEPT 2025 – MAY 2026 // BRGY. MANGGAHAN, PASIG
+            </p>
+            <h3 class="mt-2 font-head text-4xl sm:text-5xl font-bold uppercase tracking-tight text-white leading-none">
+              Urban Housing Rent Prediction from Satellite Building Age
+            </h3>
+            <p class="mt-3 font-sans text-sm sm:text-base leading-relaxed text-white/85 max-w-xl">
+              Recovering undocumented building construction timelines with LandTrendr on Landsat archives, trained and integrated with gradient boosted valuation models.
+            </p>
+            <div class="mt-5 flex items-center gap-6">
+              <button type="button" id="thesisOpenBtn" class="font-mono text-xs sm:text-sm font-bold tracking-wider text-amber-300 hover:text-white underline cursor-pointer transition-colors">
+                VIEW PROJECT ↗
+              </button>
+              <span class="font-mono text-[11px] text-white/50">#Python #XGBoost #Landsat #MoransI</span>
+            </div>
+          </div>
+
+          <!-- Polaroid-framed Preview on the Right -->
+          <div class="hidden lg:flex justify-center">
+            <div class="polaroid" style="--rot: 2deg;">
+              <span class="tape-piece tape-left" aria-hidden="true"></span>
+              <span class="tape-piece tape-right" aria-hidden="true"></span>
+              <div class="polaroid-photo">
+                <img src="images/thesis-age.jpg" alt="" class="w-full h-full object-cover" style="object-position: top;">
+              </div>
+              <span class="polaroid-caption">Building age 2002–2024</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end #cabinetStack -->
+
+  <!-- Small helper caption below the stack -->
+  <p class="mt-4 text-center font-mono text-xs text-neutral-500 select-none">
+    Hover or focus tabs to peek inside. Click any tab or project to open dossier.
+  </p>
+
+  <!-- ================= STAGE 3 : OPENED DESK VIEW ================= -->
+  <div id="cabinetDesk" class="hidden relative w-full rounded-2xl border border-black shadow-2xl overflow-hidden p-4 sm:p-8 lg:pr-14 transition-all duration-300">
+    
+    <!-- Vertical Edge Nav Tabs (Right Side on Desktop) -->
+    <aside aria-label="Project folders navigation" class="absolute right-0 top-0 bottom-0 w-12 hidden lg:flex flex-col border-l border-black bg-black/10 z-20">
+      <button type="button" data-edge-nav="eagle" class="flex-1 border-b border-black text-[11px] font-head font-bold uppercase tracking-widest [writing-mode:vertical-rl] rotate-180 flex items-center justify-center transition-all bg-[#7a1f1f] text-white hover:brightness-110 cursor-pointer" title="Philippine Eagles (File 01)">
+        EAGLE SITES #01
+      </button>
+      <button type="button" data-edge-nav="dasymetric" class="flex-1 border-b border-black text-[11px] font-head font-bold uppercase tracking-widest [writing-mode:vertical-rl] rotate-180 flex items-center justify-center transition-all bg-[#c94a14] text-white hover:brightness-110 cursor-pointer" title="Dasymetric Mapping (File 02)">
+        DASYMETRIC #02
+      </button>
+      <button type="button" data-edge-nav="thesis" class="flex-1 border-b border-black text-[11px] font-head font-bold uppercase tracking-widest [writing-mode:vertical-rl] rotate-180 flex items-center justify-center transition-all bg-[#1f2a5c] text-white hover:brightness-110 cursor-pointer" title="Rent Prediction (File 03)">
+        THESIS #03
+      </button>
+      <button type="button" data-edge-nav="kabuhayan" class="flex-1 border-b border-black text-[11px] font-head font-bold uppercase tracking-widest [writing-mode:vertical-rl] rotate-180 flex items-center justify-center transition-all bg-[#1f6b4f] text-white hover:brightness-110 cursor-pointer" title="Kabuhayan SDSS (File 04)">
+        KABUHAYAN #04
+      </button>
+      <button type="button" data-edge-nav="sediment" class="flex-1 border-b border-black text-[11px] font-head font-bold uppercase tracking-widest [writing-mode:vertical-rl] rotate-180 flex items-center justify-center transition-all bg-[#f2c230] text-black hover:brightness-105 cursor-pointer" title="Sediment Plumes (File 05)">
+        SEDIMENT #05
+      </button>
+      <button type="button" data-edge-nav="visuals" class="flex-1 text-[11px] font-head font-bold uppercase tracking-widest [writing-mode:vertical-rl] rotate-180 flex items-center justify-center transition-all bg-[#b9a3e8] text-black hover:brightness-105 cursor-pointer" title="Visuals & 3D (File 06)">
+        VISUALS #06
+      </button>
+    </aside>
+
+    <!-- Mobile Edge Navigation Bar -->
+    <div class="flex lg:hidden items-center justify-between gap-2 border-b border-black/30 pb-3 mb-4 text-xs font-mono">
+      <button type="button" id="mobilePrevBtn" class="rounded border border-black bg-white/90 px-3 py-1 font-bold text-black shadow-sm cursor-pointer">&larr; PREV FILE</button>
+      <span id="mobileFileIndicator" class="font-bold text-white text-[11px]">FILE 01 / 06</span>
+      <button type="button" id="mobileNextBtn" class="rounded border border-black bg-white/90 px-3 py-1 font-bold text-black shadow-sm cursor-pointer">NEXT FILE &rarr;</button>
+    </div>
+
+    <!-- Active Document Spread Container -->
+    <div id="deskSpread" class="relative grid gap-8 lg:grid-cols-[1.1fr_1.35fr] items-start transition-opacity duration-200">
+      
+      <!-- LEFT DESK PAGE: Methods Excerpt, Yellow Sticky Note, and Polaroid Exhibits -->
+      <div id="deskLeftPage" class="space-y-6 relative transition-all duration-300 transform">
+        
+        <!-- Coral Pink Excerpt Sheet: Methods -->
+        <div class="pink-sheet relative rounded-lg border border-black p-5 shadow-lg transform -rotate-1 transition-transform hover:rotate-0">
+          <div class="flex items-center justify-between border-b border-black/30 pb-2">
+            <span class="font-mono text-[11px] font-bold uppercase tracking-wider text-black/80">&#128203; EXCERPT // METHODS & WORKFLOW</span>
+            <span class="font-mono text-[10px] text-black/60">REF-SEC-M</span>
+          </div>
+          <h4 id="docExcerptTitle" class="mt-3 font-head text-2xl font-bold uppercase text-black">
+            Analytical Procedure
+          </h4>
+          <ul id="docMethodsList" class="mt-3 list-disc space-y-2 pl-5 text-xs font-sans leading-relaxed text-black/90">
+            <!-- Injected dynamically -->
+          </ul>
+        </div>
+
+        <!-- Yellow Sticky Note: Outcome Highlight with Paperclip -->
+        <div class="relative max-w-md mx-auto sm:ml-4 -mt-2">
+          <svg class="absolute -top-3 left-6 z-20 w-6 h-10 text-neutral-800 drop-shadow" viewBox="0 0 24 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 11V28C7 31.866 10.134 35 14 35C17.866 35 21 31.866 21 28V6C21 3.79086 19.2091 2 17 2C14.7909 2 13 3.79086 13 6V29C13 30.1046 13.8954 31 15 31C16.1046 31 17 30.1046 17 29V11" />
+          </svg>
+          
+          <div class="sticky-torn bg-[#ffe36e] border border-black/70 p-5 pt-6 shadow-xl text-black transform rotate-1 transition-transform hover:rotate-0">
+            <p class="font-mono text-[10px] font-bold tracking-widest text-black/60 uppercase">KEY OUTCOME</p>
+            <h5 id="docOutcomeHeadline" class="mt-1 font-head text-3xl font-bold leading-tight uppercase text-black">
+              ₱60/sqm from neighborhood spatial lag
+            </h5>
+            <p id="docOutcomeSubline" class="mt-2 text-xs font-sans leading-relaxed text-neutral-800">
+              Surrounding neighborhood effects outperform individual building age and structural attributes.
+            </p>
+            <div id="docLiveLinkWrapper" class="mt-3 hidden">
+              <a id="docLiveLink" href="https://kabuhayan.netlify.app/" target="_blank" rel="noopener" class="inline-block rounded-full border border-black bg-white px-3 py-1 font-mono text-[11px] font-bold hover:bg-black hover:text-white transition-colors shadow-sm">
+                Open live app &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exhibits / Photos with Polaroid styling & opposing corner tape -->
+        <div class="relative pt-2">
+          <div class="inline-flex items-center gap-2 rounded-full border border-black bg-white px-3 py-1 shadow-sm transform -rotate-2 select-none mb-3">
+            <span class="font-hand text-base font-bold text-black leading-none">exhibits</span>
+            <span class="font-mono text-[10px] text-neutral-600 font-semibold tracking-wider uppercase">(click to enlarge)</span>
+          </div>
+          <div id="docExhibitsGrid" class="flex flex-wrap gap-x-8 gap-y-10 pt-4 items-start">
+            <!-- Injected dynamically as Polaroid photo cards -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT DESK PAGE: Main File Sheet with Hole Punches -->
+      <div id="deskRightPage" class="paper-sheet relative rounded-xl border border-black p-6 sm:p-8 sm:pl-12 shadow-2xl text-black transition-all duration-300 transform">
+        
+        <!-- Left punched holes column -->
+        <div class="absolute left-3 top-10 bottom-10 flex flex-col justify-between items-center w-4 pointer-events-none" aria-hidden="true">
+          <div class="w-3.5 h-3.5 rounded-full hole-punch border border-black/30 shadow-inner"></div>
+          <div class="w-3.5 h-3.5 rounded-full hole-punch border border-black/30 shadow-inner"></div>
+          <div class="w-3.5 h-3.5 rounded-full hole-punch border border-black/30 shadow-inner"></div>
+        </div>
+
+        <!-- Sheet Header Bar -->
+        <div class="flex flex-wrap items-start justify-between gap-3 border-b border-black pb-4">
+          <div>
+            <div class="flex items-center gap-2 font-mono text-xs text-neutral-600">
+              <span id="docCategoryBadge" class="border border-black px-2 py-0.5 font-bold uppercase bg-white">Undergraduate Thesis</span>
+              <span id="docDate" class="font-semibold text-neutral-800">Sept 2025 to May 2026</span>
+            </div>
+            <h3 id="docTitle" class="mt-3 font-head text-3xl sm:text-4xl font-bold leading-tight uppercase text-black">
+              Urban Housing Rent Prediction, Barangay Manggahan
+            </h3>
+          </div>
+          <div class="text-right">
+            <span id="docFileBadge" class="inline-block border-2 border-black bg-white px-2.5 py-1 font-mono text-xs font-bold tracking-wider">FILE #03</span>
+            <p id="docCitationRef" class="mt-1 font-mono text-[10px] text-neutral-500">PHILGEOS / UP DILIMAN</p>
+          </div>
+        </div>
+
+        <!-- Document Body Content -->
+        <div class="mt-6 space-y-5 text-sm leading-relaxed pb-6">
+          <div>
+            <p class="font-mono text-xs font-bold uppercase tracking-wider text-neutral-500 mb-1">OBJECTIVE & SCOPE</p>
+            <p id="docObjective" class="text-neutral-900 font-sans leading-relaxed">
+              Mapped unrecorded building ages to predict fine-scale rental prices in a mixed-income barangay in Pasig City, using a gradient boosting approach.
+            </p>
+          </div>
+
+          <div class="border-t border-dotted border-black pt-4">
+            <p class="font-mono text-xs font-bold uppercase tracking-wider text-neutral-500 mb-1">MY PART & EXPERTISE</p>
+            <p id="docMyPart" class="text-neutral-900 font-sans leading-relaxed">
+              Developed a Python algorithm that estimates building construction and completion years from Landsat time series, trained and validated on manually traced construction histories. A rate-based approach outperformed a magnitude-based one. Produced the study maps and ran Moran's I on rent and building age clustering.
+            </p>
+          </div>
+
+          <div class="border-t border-dotted border-black pt-4">
+            <p class="font-mono text-xs font-bold uppercase tracking-wider text-neutral-500 mb-2">INDEXED METHODOLOGICAL TAGS</p>
+            <div id="docTagsList" class="flex flex-wrap gap-2 font-mono text-xs">
+              <!-- Injected dynamically -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div><!-- end #deskSpread -->
+
+  </div><!-- end #cabinetDesk -->
+
+</div><!-- end #cabinetApp -->
+
+<!-- NO-JS FALLBACK (Shows all project notes cleanly if JavaScript is disabled) -->
+<div class="no-js-only relative mx-auto grid max-w-[1200px] gap-8 md:grid-cols-2 lg:grid-cols-3 mt-6">
+  <article class="border border-black bg-white p-5">
+    <p class="text-xs font-mono">FILE #01 · Journal article · June 2026</p>
+    <h3 class="mt-2 font-head text-2xl font-bold uppercase">Philippine Eagle Release Sites in Leyte</h3>
+    <p class="mt-2 text-sm leading-relaxed">Identified spatially explicit and secure release sites for reintroducing critically endangered Philippine Eagles in Leyte. Published in Philippine Journal of Science, 155(3), 631-641.</p>
+    <p class="mt-3 text-xs font-bold">Outcome: 10,320 ha of suitable habitat identified.</p>
+  </article>
+  <article class="border border-black bg-white p-5">
+    <p class="text-xs font-mono">FILE #02 · Conference paper · February 2026</p>
+    <h3 class="mt-2 font-head text-2xl font-bold uppercase">Dasymetric Population Mapping for Urban Settlements</h3>
+    <p class="mt-2 text-sm leading-relaxed">Generated block-level population density maps for formal and informal settlements in Marikina City from Sentinel-2 imagery. Published in ISPRS Annals.</p>
+    <p class="mt-3 text-xs font-bold">Outcome: 72.19% classification accuracy for informal settlements.</p>
+  </article>
+  <article class="border border-black bg-white p-5">
+    <p class="text-xs font-mono">FILE #03 · Undergraduate thesis · 2025-2026</p>
+    <h3 class="mt-2 font-head text-2xl font-bold uppercase">Urban Housing Rent Prediction, Barangay Manggahan</h3>
+    <p class="mt-2 text-sm leading-relaxed">Mapped unrecorded building ages to predict fine-scale rental prices in Pasig City using LandTrendr on Landsat time series and XGBoost.</p>
+    <p class="mt-3 text-xs font-bold">Outcome: Neighborhood spatial lag drives rent by ₱60/sqm.</p>
+  </article>
+  <article class="border border-black bg-white p-5">
+    <p class="text-xs font-mono">FILE #04 · Web GIS · Participatory SDSS</p>
+    <h3 class="mt-2 font-head text-2xl font-bold uppercase">Vendor Relocation SDSS (Kabuhayan)</h3>
+    <p class="mt-2 text-sm leading-relaxed">A participatory web-GIS tool for negotiating mutually acceptable street vendor relocation sites in Manila using AHP and Borda voting.</p>
+    <a href="https://kabuhayan.netlify.app/" target="_blank" rel="noopener" class="mt-2 inline-block text-xs font-bold underline">Open live app &rarr;</a>
+  </article>
+  <article class="border border-black bg-white p-5">
+    <p class="text-xs font-mono">FILE #05 · Internship project · July 2025</p>
+    <h3 class="mt-2 font-head text-2xl font-bold uppercase">Sediment Plumes in Bulacan and Valenzuela</h3>
+    <p class="mt-2 text-sm leading-relaxed">Mapped sediment plumes and muddy floodwaters near New Manila International Airport using PlanetScope imagery and Flood Mud Index.</p>
+    <p class="mt-3 text-xs font-bold">Outcome: High-turbidity sediment plumes delineated for erosion control.</p>
+  </article>
+  <article class="border border-black bg-white p-5">
+    <p class="text-xs font-mono">FILE #06 · Internship tasks · 2025</p>
+    <h3 class="mt-2 font-head text-2xl font-bold uppercase">Geospatial Visuals for Geospectrum</h3>
+    <p class="mt-2 text-sm leading-relaxed">Designed geospatial visuals including HYCOM ocean current maps and 3D terrain dioramas from DEM datasets for public science engagement.</p>
+  </article>
+</div>
+
+</div>
+</section>
+
+<!-- Lightbox Modal for Exhibit Photos -->
+<div id="imageLightbox" class="fixed inset-0 z-50 hidden bg-black/90 p-4 flex flex-col items-center justify-center backdrop-blur-sm" role="dialog" aria-modal="true" aria-label="Image Lightbox">
+  <div class="relative max-w-4xl w-full flex flex-col items-center">
+    <div class="w-full flex justify-between items-center text-white mb-2 font-mono text-xs">
+      <span id="lightboxCaption">Cartographic Exhibit</span>
+      <button type="button" id="lightboxCloseBtn" class="border border-white/50 rounded px-2.5 py-1 hover:bg-white hover:text-black font-bold cursor-pointer">✕ CLOSE [ESC]</button>
+    </div>
+    <div class="bg-white p-2 rounded shadow-2xl max-h-[85vh] overflow-hidden flex items-center justify-center">
+      <img id="lightboxImg" src="" alt="Enlarged exhibit" class="max-h-[80vh] w-auto object-contain">
+    </div>
+  </div>
+</div>
+
+<!-- field -->
+<section id="field" class="relative mx-auto max-w-[1200px] px-5 py-14">
+<p class="border-b border-dotted border-black pb-2 text-sm font-bold font-mono tracking-wider">FIELD SURVEYING</p>
+<p class="mt-4 max-w-[640px] text-sm leading-relaxed text-neutral-600">Academic field projects from the BS Geodetic Engineering program at UP Diliman.</p>
+<div class="mt-6 border-b border-black">
+<div class="grid gap-1 border-t border-black py-4 sm:grid-cols-[130px_1fr] sm:gap-4"><p class="text-xs font-bold"><span class="rounded-full border border-black px-3 py-1 font-mono">Cadastral</span></p><div><h3 class="text-sm font-bold">Property survey, Lot 41-C-3-A-19 (Sandiganbayan Building II site)</h3><p class="mt-1 text-sm leading-relaxed text-neutral-600">Relocated and consolidated six parcels, subdivided a 26,835 sq.m. property, and staked corners by total station within 10 cm tolerance.</p></div></div>
+<div class="grid gap-1 border-t border-black py-4 sm:grid-cols-[130px_1fr] sm:gap-4"><p class="text-xs font-bold"><span class="rounded-full border border-black px-3 py-1 font-mono">Control</span></p><div><h3 class="text-sm font-bold">Geodetic control survey</h3><p class="mt-1 text-sm leading-relaxed text-neutral-600">7-point closed-loop traverse with 1:27,751 REC against a 1:20,000 3rd-order requirement, with least squares adjustment.</p></div></div>
+<div class="grid gap-1 border-t border-black py-4 sm:grid-cols-[130px_1fr] sm:gap-4"><p class="text-xs font-bold"><span class="rounded-full border border-black px-3 py-1 font-mono">Leveling</span></p><div><h3 class="text-sm font-bold">Differential leveling</h3><p class="mt-1 text-sm leading-relaxed text-neutral-600">Double set-up three-wire circuits to 2 mm closure (2nd order). Computed a reciprocal leveling C-factor of 0.1795.</p></div></div>
+<div class="grid gap-1 border-t border-black py-4 sm:grid-cols-[130px_1fr] sm:gap-4"><p class="text-xs font-bold"><span class="rounded-full border border-black px-3 py-1 font-mono">GNSS</span></p><div><h3 class="text-sm font-bold">Network and kinematic survey</h3><p class="mt-1 text-sm leading-relaxed text-neutral-600">Closed 6-triangle network observed with Trimble SPS985 and u-blox ZED-F9P, processed in RTKLIB at 31.405 ppm misclosure.</p></div></div>
+<div class="grid gap-1 border-t border-black py-4 sm:grid-cols-[130px_1fr] sm:gap-4"><p class="text-xs font-bold"><span class="rounded-full border border-black px-3 py-1 font-mono">Route</span></p><div><h3 class="text-sm font-bold">Road design and earthwork, Roces St.</h3><p class="mt-1 text-sm leading-relaxed text-neutral-600">750 m alignment at 120 kph in Civil 3D, with cut/fill from 20 m cross-sections and mass haul diagrams.</p></div></div>
+<div class="grid gap-1 border-t border-black py-4 sm:grid-cols-[130px_1fr] sm:gap-4"><p class="text-xs font-bold"><span class="rounded-full border border-black px-3 py-1 font-mono">Hydro / As-built</span></p><div><h3 class="text-sm font-bold">Bathymetric and road as-built surveys</h3><p class="mt-1 text-sm leading-relaxed text-neutral-600">UP Lagoon bathymetry (1:21,037 REC) modeled in QGIS. Road as-built traverse at 1:17,918 REC with CAD plans.</p></div></div>
+<div class="grid gap-1 border-t border-black py-4 sm:grid-cols-[130px_1fr] sm:gap-4"><p class="text-xs font-bold"><span class="rounded-full border border-black px-3 py-1 font-mono">Calibration</span></p><div><h3 class="text-sm font-bold">Total station calibration</h3><p class="mt-1 text-sm leading-relaxed text-neutral-600">Nikon and Sokkia instruments calibrated on 25-100 m baselines to 99.9968% relative accuracy.</p></div></div>
+</div>
+</section>
+
+<!-- profile -->
+<section id="profile" class="relative mx-auto max-w-[1200px] px-5 py-14">
+<p class="border-b border-dotted border-black pb-2 text-sm font-bold font-mono tracking-wider">PROFILE AND SKILLS</p>
+<div class="mt-8 grid gap-10 md:grid-cols-2">
+<div class="space-y-8">
+<div><h3 class="font-head text-2xl font-bold">EDUCATION</h3><p class="mt-2 text-sm leading-relaxed"><b>University of the Philippines Diliman</b><br>BS Geodetic Engineering, Cum Laude (GWA 1.6883)<br>Graduated July 2026</p></div>
+<div><h3 class="font-head text-2xl font-bold">LICENSE</h3><p class="mt-2 text-sm leading-relaxed">Geodetic Engineer, Licensure Exam Board Passer, September 2026</p></div>
+<div><h3 class="font-head text-2xl font-bold">EXPERIENCE</h3><p class="mt-2 text-sm leading-relaxed"><b>Geospectrum Marketing Services</b>, June to July 2025<br>Remote Sensing/GIS Intern and Marketing Intern. Performed remote sensing image processing and web GIS development, including map configuration and spatial data integration, and applied project management principles to coordinate deliverables.</p></div>
+<div><h3 class="font-head text-2xl font-bold">LEADERSHIP</h3><p class="mt-2 text-sm leading-relaxed"><b>UP Society of Geodetic Engineering Majors (UP GEOP)</b><br>Academic Deputy, 1st Semester AY 2025-2026. Member, 2023 to 2026.</p></div>
+</div>
+<div class="space-y-8">
+<div><h3 class="font-head text-2xl font-bold">GIS AND REMOTE SENSING</h3><div class="mt-3 flex flex-wrap gap-2"><span class="rounded-full border border-black px-3 py-1 text-xs">QGIS</span> <span class="rounded-full border border-black px-3 py-1 text-xs">ArcGIS</span> <span class="rounded-full border border-black px-3 py-1 text-xs">ArcMap</span> <span class="rounded-full border border-black px-3 py-1 text-xs">Google Earth Engine</span> <span class="rounded-full border border-black px-3 py-1 text-xs">OpenStreetMap</span> <span class="rounded-full border border-black px-3 py-1 text-xs">SAR</span> <span class="rounded-full border border-black px-3 py-1 text-xs">SNAP</span> <span class="rounded-full border border-black px-3 py-1 text-xs">Photogrammetry</span> <span class="rounded-full border border-black px-3 py-1 text-xs">Remote sensing image processing</span> <span class="rounded-full border border-black px-3 py-1 text-xs">Spatial decision support systems</span></div></div>
+<div><h3 class="font-head text-2xl font-bold">PROGRAMMING AND DATA</h3><div class="mt-3 flex flex-wrap gap-2"><span class="rounded-full border border-black px-3 py-1 text-xs">Python (XGBoost, SHAP, Moran's I)</span> <span class="rounded-full border border-black px-3 py-1 text-xs">SQL / PostgreSQL / PostGIS</span> <span class="rounded-full border border-black px-3 py-1 text-xs">R</span> <span class="rounded-full border border-black px-3 py-1 text-xs">React</span> <span class="rounded-full border border-black px-3 py-1 text-xs">Leaflet</span> <span class="rounded-full border border-black px-3 py-1 text-xs">Geodatabase management</span></div></div>
+<div><h3 class="font-head text-2xl font-bold">SURVEYING AND CAD</h3><div class="mt-3 flex flex-wrap gap-2"><span class="rounded-full border border-black px-3 py-1 text-xs">Total station</span> <span class="rounded-full border border-black px-3 py-1 text-xs">GNSS/GPS</span> <span class="rounded-full border border-black px-3 py-1 text-xs">RTKLIB</span> <span class="rounded-full border border-black px-3 py-1 text-xs">Differential leveling</span> <span class="rounded-full border border-black px-3 py-1 text-xs">Topographic</span> <span class="rounded-full border border-black px-3 py-1 text-xs">Hydrographic</span> <span class="rounded-full border border-black px-3 py-1 text-xs">Construction surveying</span> <span class="rounded-full border border-black px-3 py-1 text-xs">AutoCAD</span> <span class="rounded-full border border-black px-3 py-1 text-xs">Civil 3D</span> <span class="rounded-full border border-black px-3 py-1 text-xs">Microsoft Excel</span></div></div>
+</div></div>
+</section>
+
+<!-- contact -->
+<footer id="contact" class="relative border-t border-black bg-paper">
+<div class="mx-auto flex max-w-[1200px] flex-col gap-6 px-5 py-12 sm:flex-row sm:items-end sm:justify-between">
+<div><p class="font-head text-5xl font-bold leading-none sm:text-6xl uppercase">GET IN TOUCH</p>
+<p class="mt-4 text-sm leading-loose"><a class="underline" href="mailto:juliauy1314@gmail.com">juliauy1314@gmail.com</a><br><a class="underline" href="https://www.linkedin.com/in/juliauy1314/" target="_blank" rel="noopener">linkedin.com/in/juliauy1314</a><br><span class="font-mono">0998 3545 149</span><br>Quezon City, Philippines</p></div>
+<p class="text-xs font-mono text-neutral-500">&copy; 2026 Julia Clarice Uy</p>
+</div></footer>
+
+<!-- =============================================================== -->
+<!-- JAVASCRIPT CONTROLLER                                           -->
+<!-- =============================================================== -->
+<script>
+(function() {
+  // 1. DATA
+  var PROJECTS = {
+    eagle: {
+      id: 'eagle',
+      fileNumber: 'FILE #01',
+      categoryBadge: 'Journal article',
+      date: 'June 2026',
+      citationRef: 'Philippine Journal of Science, 155(3), 631–641',
+      title: 'Philippine Eagle Release Sites in Leyte',
+      color: '#7a1f1f',
+      textColor: 'white',
+      stackIndex: 4,
+      objective: 'Identified spatially explicit and secure release sites for reintroducing critically endangered Philippine Eagles in Leyte. Published in Philippine Journal of Science, 155(3), 631-641.',
+      myPart: 'Coordinated expert consultations with aviary experts and the Philippine Eagle Foundation, including serving as live correspondent to its director of operations. Translated expert recommendations into GIS criteria, then wrote and interpreted the findings.',
+      excerptTitle: 'Analytical Procedure & Criteria',
+      methods: [
+        'Converted ecological criteria (slope, powerline buffers, settlement proximity) into spatial constraints.',
+        'Processed DEMs, Human Footprint Index, and Key Biodiversity Areas.',
+        'Applied GIS multi-criteria decision-making with Boolean overlays to filter out high-hazard zones.'
+      ],
+      outcomeHeadline: '10,320 ha of suitable habitat',
+      outcomeSubline: 'Over 9,500 ha classified as highly secure release zones away from human infrastructure.',
+      tags: ['#QGIS', '#MCDM', '#Conservation', '#PhilippineEagle', '#Leyte'],
+      exhibits: [
+        { src: 'images/eagle-sites.jpg', caption: 'Release Sites in Eastern Visayas (Leyte & Samar)', label: 'Eastern Visayas sites', pos: 'center' },
+        { src: 'images/eagle-poster.jpg', caption: 'Helipad Proximity & Habitat Zones Detail', label: 'Helipads & habitat zones', pos: 'top' }
+      ],
+      liveUrl: null
+    },
+    dasymetric: {
+      id: 'dasymetric',
+      fileNumber: 'FILE #02',
+      categoryBadge: 'Conference paper',
+      date: 'February 2026',
+      citationRef: 'ISPRS Annals, Vol. X-5/W4-2025 (PhilGEOS 2025), pp. 401–408',
+      title: 'Dasymetric Population Mapping for Urban Settlements',
+      color: '#c94a14',
+      textColor: 'white',
+      stackIndex: 3,
+      objective: 'Generated block-level population density maps for formal and informal settlements in Marikina City from satellite imagery. Published in ISPRS Annals, Vol. X-5/W4-2025 (PhilGEOS 2025), pp. 401-408.',
+      myPart: 'Collected and prepared the ancillary data: WorldPop density, PSA census and city population figures, and census blocks. Clipped OpenStreetMap layers and converted river and building vectors into distance rasters for land cover change modeling.',
+      excerptTitle: 'Classification & Downscaling Workflow',
+      methods: [
+        'Classified urban land cover from Sentinel-2 imagery by analyzing irregular roof patterns.',
+        'Compared Random Forest, OBIA, and hybrid OBIA-RF models.',
+        'Downscaled barangay census data into 30 m grid populations based on settlement patterns.'
+      ],
+      outcomeHeadline: '72.19% accuracy for informal settlements',
+      outcomeSubline: 'Revealed high-density population clusters that standard census maps hide.',
+      tags: ['#ISPRS', '#Sentinel2', '#Marikina', '#RandomForest', '#OBIA', '#Downscaling'],
+      exhibits: [
+        { src: 'images/dasym-2015.jpg', caption: '2015 Classified Map of Marikina via OBIA-RF', label: '2015 OBIA-RF classified', pos: 'top' },
+        { src: 'images/dasym-2020.jpg', caption: '2020 Classified Settlement Map via OBIA-RF', label: '2020 OBIA-RF classified', pos: 'top' },
+        { src: 'images/dasym-accuracy.jpg', caption: 'Accuracy Assessment Matrix (OBIA vs RF)', label: 'Accuracy assessment', pos: 'top' },
+        { src: 'images/dasym-sim.jpg', caption: '2025–2030 Simulated Growth Projections', label: '2025–2030 simulations', pos: 'top' }
+      ],
+      liveUrl: null
+    },
+    thesis: {
+      id: 'thesis',
+      fileNumber: 'FILE #03',
+      categoryBadge: 'Undergraduate thesis',
+      date: 'Sept 2025 to May 2026',
+      citationRef: 'UP Diliman Department of Geodetic Engineering',
+      title: 'Urban Housing Rent Prediction, Barangay Manggahan',
+      color: '#1f2a5c',
+      textColor: 'white',
+      stackIndex: 5,
+      objective: 'Mapped unrecorded building ages to predict fine-scale rental prices in a mixed-income barangay in Pasig City, using a gradient boosting approach.',
+      myPart: 'Developed a Python algorithm that estimates building construction and completion years from Landsat time series, trained and validated on manually traced construction histories. A rate-based approach outperformed a magnitude-based one. Produced the study maps and ran Moran\'s I on rent and building age clustering.',
+      excerptTitle: 'Time-Series Extraction & Modeling',
+      methods: [
+        'Built a custom Python geocoder with the Google Places API to map web-scraped rental listings.',
+        'Extracted building ages with the LandTrendr algorithm on Landsat time series in Google Earth Engine.',
+        'Trained an XGBoost model with SHAP analysis to find spatial price drivers.'
+      ],
+      outcomeHeadline: '₱60/sqm from neighborhood spatial lag',
+      outcomeSubline: 'Neighborhood spatial lag drives rent by ₱60/sqm, outperforming individual building age and quality.',
+      tags: ['#Python", "#XGBoost", "#SHAP", "#ArcGIS", "#EarthEngine", "#Landsat", "#MoransI'],
+      exhibits: [
+        { src: 'images/thesis-age.jpg', caption: 'Estimated Building Age Map in Brgy. Manggahan (2002–2024)', label: 'Building age 2002–2024', pos: 'top' },
+        { src: 'images/thesis-bivariate.jpg', caption: 'Bivariate Map of Predicted Rent & Building Age', label: 'Rent vs age bivariate', pos: 'top' },
+        { src: 'images/thesis-moran.jpg', caption: 'Local Moran\'s I Spatial Clustering Map', label: 'Local Moran\'s I clusters', pos: 'top' }
+      ],
+      liveUrl: null
+    },
+    kabuhayan: {
+      id: 'kabuhayan',
+      fileNumber: 'FILE #04',
+      categoryBadge: 'Web GIS & Participatory SDSS',
+      date: 'Participatory SDSS',
+      citationRef: 'UP Diliman GE 197 Special Project',
+      title: 'Vendor Relocation SDSS (Kabuhayan)',
+      color: '#1f6b4f',
+      textColor: 'white',
+      stackIndex: 2,
+      objective: 'A participatory web-GIS tool for negotiating mutually acceptable street vendor relocation sites in Manila.',
+      myPart: 'Designed the system architecture and decision framework. Implemented the spatial aggregation engine combining multi-criteria evaluation with consensus ranking algorithms for local government and vendor associations.',
+      excerptTitle: 'SDSS Architecture & MCDA Workflow',
+      methods: [
+        'Built a React/Leaflet mapping app backed by PostgreSQL/PostGIS to manage stakeholder inputs and layers such as flood risk and traffic.',
+        'Implemented an AHP and Borda voting workflow to aggregate competing priorities.',
+        'Constructed interactive suitability tolerance sliders to simulate optimistic vs risk-averse scenarios.'
+      ],
+      outcomeHeadline: 'A live working prototype',
+      outcomeSubline: 'A working web-map prototype that balances vendor livelihood needs with city traffic ordinances.',
+      tags: ['#React', '#Leaflet', '#PostGIS', '#AHP', '#BordaVoting', '#ParticipatoryGIS', '#Manila'],
+      exhibits: [
+        { src: 'images/kabuhayan-1.jpg', caption: 'Role Selection Interface (Vendor / LGU / Community)', label: 'Stakeholder roles UI', pos: 'top' },
+        { src: 'images/kabuhayan-2.jpg', caption: 'Risk Strategy & Suitability Tolerance Dashboard', label: 'Risk strategy slider', pos: 'top' },
+        { src: 'images/kabuhayan-3.jpg', caption: 'Full System Architecture & GIS Processing Flow', label: 'System architecture', pos: 'top' }
+      ],
+      liveUrl: 'https://kabuhayan.netlify.app/'
+    },
+    sediment: {
+      id: 'sediment',
+      fileNumber: 'FILE #05',
+      categoryBadge: 'Internship project',
+      date: 'July 2025',
+      citationRef: 'Geospectrum Marketing Services / Planet',
+      title: 'Sediment Plumes in Bulacan and Valenzuela',
+      color: '#f2c230',
+      textColor: 'black',
+      stackIndex: 1,
+      objective: 'Mapped sediment plumes and muddy floodwaters to identify critical areas needing erosion control near the New Manila International Airport.',
+      myPart: 'Processed high-resolution PlanetScope imagery in QGIS at Geospectrum. Applied the Flood Mud Index on red and blue bands instead of NDTI to better separate turbid floodwater from dry land.',
+      excerptTitle: 'Spectral Indices & Image Processing',
+      methods: [
+        'Processed high-resolution PlanetScope imagery in QGIS at Geospectrum.',
+        'Used the Flood Mud Index on red and blue bands instead of NDTI to better separate turbid floodwater from dry land.',
+        'Delineated plumes and mapped runoff dynamics around ongoing reclamation zones.'
+      ],
+      outcomeHeadline: 'Flood Mud Index over NDTI',
+      outcomeSubline: 'High-turbidity sediment plumes delineated, giving usable geospatial intelligence for targeted erosion control in fast-developing coastal zones.',
+      tags: ['#PlanetScope', '#FloodMudIndex', '#QGIS', '#RemoteSensing', '#TurbidityMapping', '#Bulacan'],
+      exhibits: [
+        { src: 'images/sediment-map.jpg', caption: 'Sediment Plumes in Bulacan and Valenzuela (July 20, 2025)', label: 'Plume map July 2025', pos: 'top' },
+        { src: 'images/sediment-ndti.jpg', caption: 'FMI vs NDTI Comparison for Turbid Coastal Runoff', label: 'FMI vs NDTI comparison', pos: 'top' },
+        { src: 'images/sediment-true.jpg', caption: 'True Color Satellite Overview of Manila Bay Shoreline', label: 'True color satellite', pos: 'top' }
+      ],
+      liveUrl: null
+    },
+    visuals: {
+      id: 'visuals',
+      fileNumber: 'FILE #06',
+      categoryBadge: 'Internship tasks',
+      date: '2025',
+      citationRef: 'Geospectrum Marketing Services / Planet',
+      title: 'Geospatial Visuals for Geospectrum',
+      color: '#b9a3e8',
+      textColor: 'black',
+      stackIndex: 0,
+      objective: 'Designed geospatial visualizations for Geospectrum\'s social media channels to show company capabilities and explain environmental data to the public.',
+      myPart: 'Processed HYCOM data to map ocean current magnitude and flow direction around the Philippines. Built 3D terrain dioramas, such as Mt. Vesuvius, from DEM datasets. Used GIS rendering techniques to turn raw scientific data into presentation-ready visuals.',
+      excerptTitle: 'Cartographic Rendering & 3D Modeling',
+      methods: [
+        'Processed HYCOM data to map ocean current magnitude and flow direction around the Philippines.',
+        'Built 3D terrain dioramas, such as Mt. Vesuvius, from DEM datasets.',
+        'Used GIS rendering techniques to turn raw scientific data into presentation-ready visuals.'
+      ],
+      outcomeHeadline: 'Ocean currents to 3D dioramas',
+      outcomeSubline: 'Public-facing maps and terrain graphics for the company\'s social channels.',
+      tags: ['#QGIS', '#ArcGIS', '#Planet', '#HYCOM', '#DEM', '#3DRendering'],
+      exhibits: [
+        { src: 'images/geo-ocean.jpg', caption: 'Ocean Currents Flow Magnitude across the Philippines', label: 'Ocean current vectors', pos: 'center' },
+        { src: 'images/geo-vesuvius.jpg', caption: '3D DEM Terrain Block Diorama of Mt. Vesuvius, Italy', label: 'Mt. Vesuvius 3D DEM', pos: 'center' },
+        { src: 'images/geo-taal.jpg', caption: 'Taal Volcano Crater Lake Elevation Map', label: 'Taal Volcano 3D map', pos: 'center' }
+      ],
+      liveUrl: null
+    }
+  };
+
+  var FILE_ORDER = ['eagle', 'dasymetric', 'thesis', 'kabuhayan', 'sediment', 'visuals'];
+  var STACK_MAP = ['visuals', 'sediment', 'kabuhayan', 'dasymetric', 'eagle', 'thesis'];
+
+  // 2. STATE & CONSTANTS
+  var mode = 'stack'; // 'stack' | 'open'
+  var peekedIndex = null;
+  var activeProjectId = null;
+  var lastFocusedTrigger = null;
+  var peekResetTimer = null;
+
+  var PEEK = 72;
+
+  // DOM Elements
+  var cabinetStack = document.getElementById('cabinetStack');
+  var cabinetDesk = document.getElementById('cabinetDesk');
+  var deskSpread = document.getElementById('deskSpread');
+  var deskLeftPage = document.getElementById('deskLeftPage');
+  var deskRightPage = document.getElementById('deskRightPage');
+  var folders = [].slice.call(document.querySelectorAll('.cabinet-folder'));
+  var hitStrips = [].slice.call(document.querySelectorAll('[data-hit]'));
+  var hitStripContainer = document.getElementById('hitStripContainer');
+
+  var mainHeading = document.getElementById('cabinetMainHeading');
+  var breadcrumbProject = document.getElementById('breadcrumbProject');
+  var breadcrumbSeparator = document.getElementById('breadcrumbSeparator');
+  var closeBtn = document.getElementById('cabinetCloseBtn');
+  var resetBtn = document.getElementById('cabinetResetBtn');
+  var mobilePrevBtn = document.getElementById('mobilePrevBtn');
+  var mobileNextBtn = document.getElementById('mobileNextBtn');
+  var mobileFileIndicator = document.getElementById('mobileFileIndicator');
+  var thesisOpenBtn = document.getElementById('thesisOpenBtn');
+
+  // Sheet elements
+  var docCategoryBadge = document.getElementById('docCategoryBadge');
+  var docDate = document.getElementById('docDate');
+  var docTitle = document.getElementById('docTitle');
+  var docFileBadge = document.getElementById('docFileBadge');
+  var docCitationRef = document.getElementById('docCitationRef');
+  var docObjective = document.getElementById('docObjective');
+  var docMyPart = document.getElementById('docMyPart');
+  var docTagsList = document.getElementById('docTagsList');
+  var docExcerptTitle = document.getElementById('docExcerptTitle');
+  var docMethodsList = document.getElementById('docMethodsList');
+  var docOutcomeHeadline = document.getElementById('docOutcomeHeadline');
+  var docOutcomeSubline = document.getElementById('docOutcomeSubline');
+  var docLiveLinkWrapper = document.getElementById('docLiveLinkWrapper');
+  var docLiveLink = document.getElementById('docLiveLink');
+  var docExhibitsGrid = document.getElementById('docExhibitsGrid');
+
+  // Lightbox elements
+  var lightbox = document.getElementById('imageLightbox');
+  var lightboxImg = document.getElementById('lightboxImg');
+  var lightboxCaption = document.getElementById('lightboxCaption');
+  var lightboxCloseBtn = document.getElementById('lightboxCloseBtn');
+
+  // 3. PEEK FUNCTION
+  function setPeek(k) {
+    if (mode === 'open') return;
+    peekedIndex = k;
+    folders.forEach(function(folder, i) {
+      if (k !== null && i > k) {
+        folder.style.transform = 'translateY(' + PEEK + 'px)';
+      } else {
+        folder.style.transform = 'translateY(0px)';
+      }
+    });
+
+    // Lower hit strips pass pointer events through when a folder is peeked
+    hitStrips.forEach(function(strip, i) {
+      if (k !== null && i > k) {
+        strip.style.pointerEvents = 'none';
+      } else {
+        strip.style.pointerEvents = 'auto';
+      }
+    });
+  }
+
+  // 4. HIT STRIP EVENTS WITH 60MS DEBOUNCED RESET
+  var isTouch = window.matchMedia && window.matchMedia('(hover: none)').matches;
+
+  hitStrips.forEach(function(strip) {
+    var k = parseInt(strip.getAttribute('data-hit'), 10);
+    var pId = STACK_MAP[k];
+
+    if (!isTouch) {
+      strip.addEventListener('pointerenter', function() {
+        if (peekResetTimer) {
+          clearTimeout(peekResetTimer);
+          peekResetTimer = null;
+        }
+        setPeek(k);
+      });
+
+      strip.addEventListener('pointerleave', function() {
+        if (peekResetTimer) clearTimeout(peekResetTimer);
+        peekResetTimer = setTimeout(function() {
+          setPeek(null);
+        }, 60);
+      });
+    }
+
+    strip.addEventListener('focus', function() {
+      if (peekResetTimer) clearTimeout(peekResetTimer);
+      setPeek(k);
+    });
+
+    strip.addEventListener('blur', function() {
+      setPeek(null);
+    });
+
+    strip.addEventListener('click', function(e) {
+      e.preventDefault();
+      openProject(pId, false);
+    });
+  });
+
+  // Direct click handling on exposed folder bodies
+  folders.forEach(function(folder) {
+    folder.addEventListener('click', function(e) {
+      if (mode === 'open') return;
+      var pId = folder.getAttribute('data-project-id');
+      openProject(pId, false);
+    });
+  });
+
+  if (thesisOpenBtn) {
+    thesisOpenBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      openProject('thesis', false);
+    });
+  }
+
+  // 5. OPEN PROJECT & POLAROID BUILDER
+  function fillDesk(p) {
+    cabinetDesk.style.backgroundColor = p.color;
+    docCategoryBadge.textContent = p.categoryBadge;
+    docDate.textContent = p.date;
+    docTitle.textContent = p.title;
+    docFileBadge.textContent = p.fileNumber;
+    docCitationRef.textContent = p.citationRef;
+    docObjective.textContent = p.objective;
+    docMyPart.textContent = p.myPart;
+    docExcerptTitle.textContent = p.excerptTitle;
+
+    docMethodsList.innerHTML = '';
+    p.methods.forEach(function(m) {
+      var li = document.createElement('li');
+      li.textContent = m;
+      docMethodsList.appendChild(li);
+    });
+
+    docOutcomeHeadline.textContent = p.outcomeHeadline;
+    docOutcomeSubline.textContent = p.outcomeSubline;
+
+    if (p.liveUrl) {
+      docLiveLinkWrapper.classList.remove('hidden');
+      docLiveLink.href = p.liveUrl;
+    } else {
+      docLiveLinkWrapper.classList.add('hidden');
+    }
+
+    docTagsList.innerHTML = '';
+    p.tags.forEach(function(t) {
+      var sp = document.createElement('span');
+      sp.className = 'rounded border border-black/40 bg-white/70 px-2.5 py-1 text-[11px] font-bold';
+      sp.textContent = t;
+      docTagsList.appendChild(sp);
+    });
+
+    // Rebuild Polaroid exhibits
+    docExhibitsGrid.innerHTML = '';
+    var rotAngles = [-3, 2.5, -1.5, 3];
+
+    p.exhibits.forEach(function(ex, idx) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'polaroid cursor-pointer text-left';
+      btn.setAttribute('aria-label', 'Enlarge exhibit: ' + ex.caption);
+
+      var rot = rotAngles[idx % rotAngles.length];
+      btn.style.setProperty('--rot', rot + 'deg');
+
+      // Offset every second card down by 20px for scattered look
+      if (idx % 2 === 1) {
+        btn.style.marginTop = '20px';
+      }
+
+      btn.innerHTML =
+        '<span class="tape-piece tape-left" aria-hidden="true"></span>' +
+        '<span class="tape-piece tape-right" aria-hidden="true"></span>' +
+        '<div class="polaroid-photo">' +
+          '<img src="' + ex.src + '" alt="" class="w-full h-full object-cover" style="object-position: ' + (ex.pos || 'center') + ';">' +
+        '</div>' +
+        '<span class="polaroid-caption">' + (ex.label || ex.caption) + '</span>';
+
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        openLightbox(ex.src, ex.caption, btn);
+      });
+
+      docExhibitsGrid.appendChild(btn);
+    });
+
+    // Update active vertical edge tab
+    document.querySelectorAll('[data-edge-nav]').forEach(function(tab) {
+      var isCur = tab.getAttribute('data-edge-nav') === p.id;
+      tab.classList.toggle('ring-2', isCur);
+      tab.classList.toggle('ring-black', isCur);
+      tab.classList.toggle('brightness-125', isCur);
+    });
+
+    // Update mobile indicator
+    mobileFileIndicator.textContent = p.fileNumber + ' / 06';
+  }
+
+  function openProject(id, skipAnimation) {
+    var p = PROJECTS[id];
+    if (!p) return;
+
+    activeProjectId = id;
+    mode = 'open';
+    var chosenIndex = p.stackIndex;
+
+    fillDesk(p);
+
+    if (skipAnimation) {
+      cabinetStack.classList.add('hidden');
+      cabinetDesk.classList.remove('hidden');
+      deskLeftPage.style.opacity = '1';
+      deskLeftPage.style.transform = 'none';
+      deskRightPage.style.opacity = '1';
+      deskRightPage.style.transform = 'none';
+
+      mainHeading.textContent = p.title;
+      mainHeading.setAttribute('tabindex', '-1');
+      breadcrumbProject.textContent = p.title;
+      breadcrumbProject.classList.remove('hidden');
+      breadcrumbSeparator.classList.remove('hidden');
+      closeBtn.classList.remove('hidden');
+
+      if (window.location.hash !== '#project-' + id) {
+        history.replaceState(null, '', '#project-' + id);
+      }
+      return;
+    }
+
+    // Step b: Slide front folders down by ~110% (680px) with 40ms stagger; fade out folders behind it
+    folders.forEach(function(folder, i) {
+      if (i > chosenIndex) {
+        var delay = (i - chosenIndex) * 40;
+        folder.style.transition = 'transform 380ms cubic-bezier(0.16, 1, 0.3, 1) ' + delay + 'ms, opacity 240ms ease';
+        folder.style.transform = 'translateY(680px)';
+      } else if (i < chosenIndex) {
+        folder.style.transition = 'opacity 220ms ease';
+        folder.style.opacity = '0';
+      }
+    });
+
+    // Step c: Switch to desk after ~420ms
+    setTimeout(function() {
+      cabinetStack.classList.add('hidden');
+      cabinetDesk.classList.remove('hidden');
+
+      // Step d: Fade in sheets with staggered motion
+      deskLeftPage.style.opacity = '0';
+      deskLeftPage.style.transform = 'translateY(24px)';
+      deskRightPage.style.opacity = '0';
+      deskRightPage.style.transform = 'translateY(36px)';
+
+      setTimeout(function() {
+        deskLeftPage.style.transition = 'opacity 320ms ease, transform 320ms cubic-bezier(0.16, 1, 0.3, 1)';
+        deskLeftPage.style.opacity = '1';
+        deskLeftPage.style.transform = 'translateY(0)';
+      }, 50);
+
+      setTimeout(function() {
+        deskRightPage.style.transition = 'opacity 340ms ease, transform 340ms cubic-bezier(0.16, 1, 0.3, 1)';
+        deskRightPage.style.opacity = '1';
+        deskRightPage.style.transform = 'translateY(0)';
+      }, 130);
+
+      // Step e: Update heading, breadcrumbs & close button
+      mainHeading.textContent = p.title;
+      mainHeading.setAttribute('tabindex', '-1');
+      breadcrumbProject.textContent = p.title;
+      breadcrumbProject.classList.remove('hidden');
+      breadcrumbSeparator.classList.remove('hidden');
+      closeBtn.classList.remove('hidden');
+
+      // Step f: Set URL hash and move focus to heading
+      if (window.location.hash !== '#project-' + id) {
+        history.pushState(null, '', '#project-' + id);
+      }
+      mainHeading.focus();
+    }, 420);
+  }
+
+  // 6. CLOSE PROJECT
+  function closeProject(updateHash) {
+    if (mode !== 'open') return;
+    mode = 'stack';
+
+    cabinetDesk.classList.add('hidden');
+    cabinetStack.classList.remove('hidden');
+
+    folders.forEach(function(folder) {
+      folder.style.transition = 'transform 320ms cubic-bezier(0.16, 1, 0.3, 1), opacity 240ms ease';
+      folder.style.transform = 'translateY(0px)';
+      folder.style.opacity = '1';
+    });
+    setPeek(null);
+
+    mainHeading.textContent = 'ARCHIVAL DOSSIERS 01–06';
+    breadcrumbProject.classList.add('hidden');
+    breadcrumbSeparator.classList.add('hidden');
+    closeBtn.classList.add('hidden');
+
+    if (updateHash !== false) {
+      history.pushState(null, '', '#notes');
+    }
+
+    if (activeProjectId) {
+      var p = PROJECTS[activeProjectId];
+      if (p) {
+        var strip = document.querySelector('[data-hit="' + p.stackIndex + '"]');
+        if (strip) strip.focus();
+      }
+    }
+    activeProjectId = null;
+  }
+
+  closeBtn.addEventListener('click', function() { closeProject(true); });
+  resetBtn.addEventListener('click', function() { closeProject(true); });
+
+  // 7. EDGE NAVIGATION & MOBILE PREV/NEXT
+  function swapDeskProject(nextId) {
+    if (!PROJECTS[nextId]) return;
+    activeProjectId = nextId;
+
+    deskSpread.style.transition = 'opacity 160ms ease';
+    deskSpread.style.opacity = '0.3';
+
+    setTimeout(function() {
+      fillDesk(PROJECTS[nextId]);
+      mainHeading.textContent = PROJECTS[nextId].title;
+      breadcrumbProject.textContent = PROJECTS[nextId].title;
+      deskSpread.style.opacity = '1';
+      history.replaceState(null, '', '#project-' + nextId);
+    }, 160);
+  }
+
+  document.querySelectorAll('[data-edge-nav]').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var id = btn.getAttribute('data-edge-nav');
+      swapDeskProject(id);
+    });
+  });
+
+  mobilePrevBtn.addEventListener('click', function() {
+    var curIdx = FILE_ORDER.indexOf(activeProjectId);
+    var prevIdx = (curIdx - 1 + FILE_ORDER.length) % FILE_ORDER.length;
+    swapDeskProject(FILE_ORDER[prevIdx]);
+  });
+
+  mobileNextBtn.addEventListener('click', function() {
+    var curIdx = FILE_ORDER.indexOf(activeProjectId);
+    var nextIdx = (curIdx + 1) % FILE_ORDER.length;
+    swapDeskProject(FILE_ORDER[nextIdx]);
+  });
+
+  // 8. EXTERNAL ENTRY POINTS (.cabinet-trigger, Hashchange, Deep Link)
+  document.querySelectorAll('.cabinet-trigger').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var href = link.getAttribute('href') || '';
+      if (href.indexOf('#project-') === 0) {
+        e.preventDefault();
+        var id = href.replace('#project-', '');
+        var notesSec = document.getElementById('notes');
+        if (notesSec) {
+          notesSec.scrollIntoView({ behavior: 'smooth' });
+        }
+        setTimeout(function() {
+          openProject(id, false);
+        }, 250);
+      }
+    });
+  });
+
+  function handleRoute(isInitial) {
+    var hash = window.location.hash || '';
+    if (hash.indexOf('#project-') === 0) {
+      var id = hash.replace('#project-', '');
+      if (PROJECTS[id]) {
+        openProject(id, isInitial);
+      }
+    } else if (hash === '#notes' || hash === '') {
+      if (mode === 'open') {
+        closeProject(false);
+      }
+    }
+  }
+
+  window.addEventListener('hashchange', function() {
+    handleRoute(false);
+  });
+
+  // 9. LIGHTBOX
+  function openLightbox(src, caption, triggerEl) {
+    lastFocusedTrigger = triggerEl;
+    lightboxImg.src = src;
+    lightboxImg.alt = caption;
+    lightboxCaption.textContent = caption;
+    lightbox.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    lightboxCloseBtn.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.add('hidden');
+    document.body.style.overflow = '';
+    if (lastFocusedTrigger) {
+      lastFocusedTrigger.focus();
+      lastFocusedTrigger = null;
+    }
+  }
+
+  lightboxCloseBtn.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  window.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      if (!lightbox.classList.contains('hidden')) {
+        closeLightbox();
+      } else if (mode === 'open') {
+        closeProject(true);
+      }
+    }
+  });
+
+  // 10. SITE BEHAVIORS (Date, Menu, Carousel)
+  var d = new Date(), w = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+  document.getElementById('d1').textContent = String(d.getMonth()+1).padStart(2,'0') + ' ' + String(d.getDate()).padStart(2,'0');
+  document.getElementById('d2').textContent = d.getFullYear();
+  document.getElementById('d3').textContent = w[d.getDay()];
+
+  var mb = document.getElementById('menuBtn'), m = document.getElementById('menu');
+  if (mb && m) {
+    mb.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var o = m.classList.toggle('hidden');
+      mb.setAttribute('aria-expanded', String(!o));
+    });
+    document.addEventListener('click', function(e) {
+      if (!m.contains(e.target) && e.target !== mb) {
+        m.classList.add('hidden');
+        mb.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  var slides = [].slice.call(document.querySelectorAll('[data-slide]'));
+  var dots = [].slice.call(document.querySelectorAll('[data-dot]'));
+  var sIdx = 0;
+
+  function setSlide(n) {
+    sIdx = (n + slides.length) % slides.length;
+    slides.forEach(function(el, k) {
+      el.classList.toggle('hidden', k !== sIdx);
+    });
+    dots.forEach(function(dot, k) {
+      dot.classList.toggle('bg-black', k === sIdx);
+      dot.classList.toggle('bg-black/25', k !== sIdx);
+    });
+  }
+
+  var prevBtn = document.getElementById('prev');
+  var nextBtn = document.getElementById('next');
+  if (prevBtn) prevBtn.addEventListener('click', function() { setSlide(sIdx - 1); });
+  if (nextBtn) nextBtn.addEventListener('click', function() { setSlide(sIdx + 1); });
+  dots.forEach(function(dot, k) {
+    dot.addEventListener('click', function() { setSlide(k); });
+  });
+
+  // Initial route check on page load
+  handleRoute(true);
+
+})();
+</script>
+</body>
+</html>
